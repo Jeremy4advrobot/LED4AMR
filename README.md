@@ -2,7 +2,7 @@
 
 LED編號定義
 
-![image](https://github.com/Jeremy4advrobot/LED4AMR/blob/master/NumberDefine4LED.png)
+![image](https://github.com/Jeremy4advrobot/LED4AMR/blob/master/DefineNumber4LED.png)
 
 
 
