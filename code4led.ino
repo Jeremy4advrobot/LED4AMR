@@ -14,9 +14,11 @@
 int number4strip=30; // 每條LED燈條上有的LED數目
 
 Adafruit_NeoPixel strip_l = Adafruit_NeoPixel(number4strip, PIN_l, NEO_GRB + NEO_KHZ800);
+//定義左側的燈條
+
 
 Adafruit_NeoPixel strip_r = Adafruit_NeoPixel(number4strip, PIN_r, NEO_GRB + NEO_KHZ800);
-
+//定義右側的燈條
 
 
 ros::NodeHandle  nh;
@@ -29,6 +31,33 @@ void messageCb( const std_msgs::String& toggle_msg){
 
  String state;
  state=toggle_msg.data;
+
+
+
+if (state== "demo")
+  {
+   breathe(1,0); //橘色呼吸燈
+    
+    breathe(1,1); //綠色呼吸燈
+     
+    backward(0,5,0); //藍色兩側跑馬燈, 由標號最大的led往零號led跑
+    
+    backward(0,5,1); //藍色左側跑馬燈, 由標號最大的led往零號led跑
+    
+    backward(0,5,2); //藍色右側跑馬燈, 由標號最大的led往零號led跑
+
+    forward(0,5,0); //藍色兩側跑馬燈, 由標號零號led往標號最大的led跑
+    
+    forward(0,5,1); //藍色左側跑馬燈, 由標號零號led往標號最大的led跑
+    
+    forward(0,5,2); //藍色右側跑馬燈, 由標號零號led往標號最大的led跑
+
+    
+blibli(0);  //閃黃燈
+blibli(1);   //閃紅燈
+blibli(2);  //閃紫燈
+    }
+ 
  
    if (state== "q")
   {
@@ -242,6 +271,7 @@ delay(wait);
 
 }
 
+
 void forward(int pace, int number, int mode) {
 
   int ma=180;
@@ -394,7 +424,7 @@ if (pace==1) {wait=100;}
 if (pace==2) {wait=200;}
 
 
-for( int t=(number4strip+mid);t>(1-mid);t--)
+for( int t=(number4strip+mid-1);t>(0-mid);t--)
 {
   for(int i=0;i<(1+(number/2));i++)
   {
@@ -427,4 +457,23 @@ for( int t=(number4strip+mid);t>(1-mid);t--)
   
   delay(wait);
 }
+strip_l.setPixelColor(0, 0,0,0);
+  strip_r.setPixelColor(0, 0,0,0);
+  if(mode==0){
+  strip_l.show();
+  strip_r.show();
+  }
+  else if(mode==1){
+  strip_l.show();
+  }
+  else if(mode==2){
+  
+  strip_r.show();
+  }
+  
+  
+  
+  delay(wait);
+
+
 }
