@@ -11,7 +11,7 @@
 
 #define PIN_r A3  //A3 腳位控制右側LED
 
-int number4strip=30; // 每條LED燈條上有的LED數目
+int number4strip=15; // 每條LED燈條上有的LED數目
 
 Adafruit_NeoPixel strip_l = Adafruit_NeoPixel(number4strip, PIN_l, NEO_GRB + NEO_KHZ800);
 //定義左側的燈條
